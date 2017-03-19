@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions
+  targetNamespace="http://www.example.com/PharmacistService/" 
+  xmlns:tns="http://www.example.com/PharmacistService/" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:pt="http://www.example.org/PharmaTypes">
+  
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/PharmacistService/">
+      <xsd:import schemaLocation="PharmaTypes.xsd"
+				namespace="http://www.example.org/PharmaTypes"></xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="MedicineRequest">
+    <wsdl:part name='MedicineRequest' type='pt:PrescriptionListType'/>
+  </wsdl:message>
+
+  <wsdl:portType name="PharmacistServicePortType">
+    <wsdl:operation name="RequestMedicine">
+      <wsdl:input message="tns:MedicineRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding type="tns:PharmacistServicePortType" name="PharmacistServiceBinding">
+     <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RequestMedicine">
+      <soap:operation soapAction="http://example.com/RequestMedicine"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://www.example.com/PharmacistService/" />
+      </wsdl:input>
+      </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="PharmacistService-rpc">
+    <wsdl:port binding="tns:PharmacistServiceBinding" name="PharmacistServicePort">
+      <soap:address location="http://www.example.org/" />
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

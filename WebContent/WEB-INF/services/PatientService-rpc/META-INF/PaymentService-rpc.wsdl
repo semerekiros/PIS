@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://www.example.com/CashierService" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mh="http://www.example.com/CashierService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <message name="paymentRequest">
+    <part name="patientId" type="xsd:string">
+    </part>
+  </message>
+  <message name="paymentResponse">
+    <part name="receipt" type="xsd:string">
+    </part>
+  </message>
+  <message name="notifyMedicineReadyRequest">
+    <part name="patientId" type="xsd:int">
+    </part>
+  </message>
+  <portType name="paymentServicePortType">
+    <operation name="DoPayment">
+      <input message="mh:paymentRequest">
+    </input>
+      <output message="mh:paymentResponse">
+    </output>
+    </operation>
+    <operation name="notifyMedicineReady">
+      <input message="mh:notifyMedicineReadyRequest">
+    </input>
+    </operation>
+  </portType>
+  <binding name="PaymentServiceBinding" type="mh:paymentServicePortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="DoPayment">
+      <soap:operation soapAction="http://example.com/DoPayment"/>
+      <input>
+        <soap:body use="literal" namespace="http://www.example.com/CashierService"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://www.example.com/CashierService"/>
+      </output>
+    </operation>
+    <operation name="notifyMedicineReady">
+      <soap:operation soapAction="http://example.com/notifyMedicineReady"/>
+      <input>
+        <soap:body use="literal" namespace="http://www.example.com/CashierService"/>
+      </input>
+    </operation>
+  </binding>
+  <service name="PaymentService-rpc">
+    <port name="PaymentServicePort" binding="mh:PaymentServiceBinding">
+      <soap:address location="http://www.example.org/"/>
+    </port>
+  </service>
+</definitions>

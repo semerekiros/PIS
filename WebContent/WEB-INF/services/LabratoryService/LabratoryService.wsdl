@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:tns="http://www.example.org/LabratoryService/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ name="LabratoryService" 
+ targetNamespace="http://www.example.org/LabratoryService/" 
+ xmlns:inv="http://www.example.org/InvoiceTypes">
+  
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    	<xsd:import namespace="http://www.example.org/InvoiceTypes"
+    		schemaLocation="InvoiceTypes.xsd">
+    	</xsd:import></xsd:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="GetExamDetailRequest">
+    <wsdl:part name="PatientID" type="xsd:string"/>
+  </wsdl:message>
+  
+  <wsdl:message name="GetExamDetailResponse">
+    <wsdl:part name="ExamList" type="inv:DiagnoseListType"/>
+  </wsdl:message>
+  
+  
+  <wsdl:portType name="LabratoryService">
+    <wsdl:operation name="GetExamDetail">
+      <wsdl:input name="PatientID" message="tns:GetExamDetailRequest"/>
+      <wsdl:output message="tns:GetExamDetailResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="LabratoryServiceSOAP" type="tns:LabratoryService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetExamDetail">
+      <soap:operation soapAction="http://www.example.org/LabratoryService/GetExamDetail"/>
+      <wsdl:input>
+        <soap:body namespace="http://www.example.org/LabratoryService/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://www.example.org/LabratoryService/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  
+  <wsdl:service name="LabratoryService">
+    <wsdl:port binding="tns:LabratoryServiceSOAP" name="LabratoryServiceSOAP">
+      <soap:address location="http://localhost:8080/TrialProjectWS/services/LabratoryService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/InvoiceTypes" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.example.org/InvoiceTypes">
+    <complexType name="PrescriptionListType">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="PrescriptionItem" type="tns:PrescriptionList"/>
+        </sequence>
+    </complexType>
+    <complexType name="PrescriptionList">
+        <sequence>
+            <element name="productId" type="string"/>
+            <element name="quantity" type="int"/>
+            <element name="price" type="int"/>
+        </sequence>
+    </complexType>
+    <complexType name="DiagnoseListType">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="DiagnoseItem" type="tns:DiagnoseList"/>
+        </sequence>
+    </complexType>
+    <complexType name="DiagnoseList">
+        <sequence>
+            <element name="diagnoseId" type="string"/>
+            <element name="price" type="int"/>
+        </sequence>
+    </complexType>
+    <complexType name="PriceListType">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="ExamItem" type="tns:PriceList"/>
+        </sequence>
+    </complexType>
+    <complexType name="PriceList">
+        <sequence>
+            <element name="ExamName" type="string"/>
+            <element name="price" type="float"/>
+        </sequence>
+    </complexType>
+</schema>

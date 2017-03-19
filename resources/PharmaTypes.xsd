@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/PharmaTypes" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.example.org/PharmaTypes">
+    <complexType name="PrescriptionListType">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="PrescriptionItem" type="tns:Prescription"/>
+        </sequence>
+    </complexType>
+    <complexType name="Prescription">
+        <all>
+            <element name="Description" type="string"/>
+            <element name="Quantity" type="int"/>
+        </all>
+    </complexType>
+</schema>
