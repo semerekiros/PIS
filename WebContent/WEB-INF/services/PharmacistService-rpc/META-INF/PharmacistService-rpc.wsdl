@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions targetNamespace="http://www.example.com/PharmacistService/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pt="http://www.example.org/PharmaTypes" xmlns:tns="http://www.example.com/PharmacistService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<definitions targetNamespace="http://www.example.org/PharmacistService/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pt="http://www.example.org/PharmaTypes" xmlns:tns="http://www.example.org/PharmacistService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <types>
     <xsd:schema targetNamespace="http://www.example.org/PharmacistService/">
       <xsd:import namespace="http://www.example.org/PharmaTypes" schemaLocation="PharmaTypes.xsd"/>
@@ -18,9 +18,9 @@
   <binding name="PharmacistServiceBinding" type="tns:PharmacistServicePortType">
     <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name="RequestMedicine">
-      <soap:operation soapAction="http://example.com/RequestMedicine"/>
+      <soap:operation soapAction="http://example.org/RequestMedicine"/>
       <input>
-        <soap:body use="literal" namespace="http://www.example.com/PharmacistService/"/>
+        <soap:body use="literal" namespace="http://www.example.org/PharmacistService/"/>
       </input>
     </operation>
   </binding>

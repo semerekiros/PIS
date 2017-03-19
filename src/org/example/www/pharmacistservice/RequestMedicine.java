@@ -1,108 +1,59 @@
 
 /**
- * PrescriptionListType.java
+ * RequestMedicine.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.4  Built on : Dec 28, 2015 (10:04:10 GMT)
  */
 
             
-                package org.example.www.pharmatypes;
+                package org.example.www.pharmacistservice;
             
 
             /**
-            *  PrescriptionListType bean class
+            *  RequestMedicine bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class PrescriptionListType
+        public  class RequestMedicine
         implements org.apache.axis2.databinding.ADBBean{
-        /* This type was generated from the piece of schema that had
-                name = PrescriptionListType
-                Namespace URI = http://www.example.org/PharmaTypes
-                Namespace Prefix = ns1
-                */
+        
+                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
+                "http://www.example.org/PharmacistService/",
+                "RequestMedicine",
+                "ns2");
+
             
 
                         /**
-                        * field for PrescriptionItem
-                        * This was an Array!
+                        * field for MedicineRequest
                         */
 
                         
-                                    protected org.example.www.pharmatypes.Prescription[] localPrescriptionItem ;
+                                    protected org.example.www.pharmatypes.PrescriptionListType localMedicineRequest ;
                                 
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localPrescriptionItemTracker = false ;
-
-                           public boolean isPrescriptionItemSpecified(){
-                               return localPrescriptionItemTracker;
-                           }
-
-                           
 
                            /**
                            * Auto generated getter method
-                           * @return org.example.www.pharmatypes.Prescription[]
+                           * @return org.example.www.pharmatypes.PrescriptionListType
                            */
-                           public  org.example.www.pharmatypes.Prescription[] getPrescriptionItem(){
-                               return localPrescriptionItem;
+                           public  org.example.www.pharmatypes.PrescriptionListType getMedicineRequest(){
+                               return localMedicineRequest;
                            }
 
                            
                         
-
-
-                               
-                              /**
-                               * validate the array for PrescriptionItem
+                            /**
+                               * Auto generated setter method
+                               * @param param MedicineRequest
                                */
-                              protected void validatePrescriptionItem(org.example.www.pharmatypes.Prescription[] param){
-                             
-                              }
-
-
-                             /**
-                              * Auto generated setter method
-                              * @param param PrescriptionItem
-                              */
-                              public void setPrescriptionItem(org.example.www.pharmatypes.Prescription[] param){
-                              
-                                   validatePrescriptionItem(param);
-
-                               localPrescriptionItemTracker = param != null;
-                                      
-                                      this.localPrescriptionItem=param;
-                              }
-
-                               
-                             
-                             /**
-                             * Auto generated add method for the array for convenience
-                             * @param param org.example.www.pharmatypes.Prescription
-                             */
-                             public void addPrescriptionItem(org.example.www.pharmatypes.Prescription param){
-                                   if (localPrescriptionItem == null){
-                                   localPrescriptionItem = new org.example.www.pharmatypes.Prescription[]{};
-                                   }
-
+                               public void setMedicineRequest(org.example.www.pharmatypes.PrescriptionListType param){
                             
-                                 //update the setting tracker
-                                localPrescriptionItemTracker = true;
+                                            this.localMedicineRequest=param;
+                                       
+
+                               }
                             
-
-                               java.util.List list =
-                            org.apache.axis2.databinding.utils.ConverterUtil.toList(localPrescriptionItem);
-                               list.add(param);
-                               this.localPrescriptionItem =
-                             (org.example.www.pharmatypes.Prescription[])list.toArray(
-                            new org.example.www.pharmatypes.Prescription[list.size()]);
-
-                             }
-                             
 
      
      
@@ -119,8 +70,8 @@
 
         
                org.apache.axiom.om.OMDataSource dataSource =
-                       new org.apache.axis2.databinding.ADBDataSource(this,parentQName);
-               return factory.createOMElement(dataSource,parentQName);
+                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME);
+               return factory.createOMElement(dataSource,MY_QNAME);
             
         }
 
@@ -149,46 +100,40 @@
                   if (serializeType){
                
 
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://www.example.org/PharmaTypes");
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://www.example.org/PharmacistService/");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":PrescriptionListType",
+                           namespacePrefix+":RequestMedicine",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "PrescriptionListType",
+                           "RequestMedicine",
                            xmlWriter);
                    }
 
                
                    }
-                if (localPrescriptionItemTracker){
-                                       if (localPrescriptionItem!=null){
-                                            for (int i = 0;i < localPrescriptionItem.length;i++){
-                                                if (localPrescriptionItem[i] != null){
-                                                 localPrescriptionItem[i].serialize(new javax.xml.namespace.QName("","PrescriptionItem"),
-                                                           xmlWriter);
-                                                } else {
-                                                   
-                                                        // we don't have to do any thing since minOccures is zero
-                                                    
-                                                }
+               
+                                    if (localMedicineRequest==null){
 
-                                            }
-                                     } else {
-                                        
-                                               throw new org.apache.axis2.databinding.ADBException("PrescriptionItem cannot be null!!");
-                                        
+                                        writeStartElement(null, "", "MedicineRequest", xmlWriter);
+
+                                       // write the nil attribute
+                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                      xmlWriter.writeEndElement();
+                                    }else{
+                                     localMedicineRequest.serialize(new javax.xml.namespace.QName("","MedicineRequest"),
+                                        xmlWriter);
                                     }
-                                 }
+                                
                     xmlWriter.writeEndElement();
                
 
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://www.example.org/PharmaTypes")){
-                return "ns1";
+            if(namespace.equals("http://www.example.org/PharmacistService/")){
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -365,28 +310,14 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                 if (localPrescriptionItemTracker){
-                             if (localPrescriptionItem!=null) {
-                                 for (int i = 0;i < localPrescriptionItem.length;i++){
-
-                                    if (localPrescriptionItem[i] != null){
-                                         elementList.add(new javax.xml.namespace.QName("",
-                                                                          "PrescriptionItem"));
-                                         elementList.add(localPrescriptionItem[i]);
-                                    } else {
-                                        
-                                                // nothing to do
-                                            
-                                    }
-
-                                 }
-                             } else {
-                                 
-                                        throw new org.apache.axis2.databinding.ADBException("PrescriptionItem cannot be null!!");
-                                    
-                             }
-
-                        }
+                
+                            elementList.add(new javax.xml.namespace.QName("",
+                                                                      "MedicineRequest"));
+                            
+                            
+                                    elementList.add(localMedicineRequest==null?null:
+                                    localMedicineRequest);
+                                
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -411,9 +342,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static PrescriptionListType parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            PrescriptionListType object =
-                new PrescriptionListType();
+        public static RequestMedicine parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            RequestMedicine object =
+                new RequestMedicine();
 
             int event;
             java.lang.String nillableValue = null;
@@ -437,10 +368,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"PrescriptionListType".equals(type)){
+                            if (!"RequestMedicine".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (PrescriptionListType)org.example.www.pharmacistservice.ExtensionMapper.getTypeObject(
+                                return (RequestMedicine)org.example.www.pharmacistservice.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -462,54 +393,31 @@
                     
                     reader.next();
                 
-                        java.util.ArrayList list1 = new java.util.ArrayList();
-                    
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","PrescriptionItem").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","MedicineRequest").equals(reader.getName())){
                                 
+                                      nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                      if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                          object.setMedicineRequest(null);
+                                          reader.next();
+                                            
+                                            reader.next();
+                                          
+                                      }else{
                                     
-                                    
-                                    // Process the array and step past its final element's end.
-                                    list1.add(org.example.www.pharmatypes.Prescription.Factory.parse(reader));
-                                                                
-                                                        //loop until we find a start element that is not part of this array
-                                                        boolean loopDone1 = false;
-                                                        while(!loopDone1){
-                                                            // We should be at the end element, but make sure
-                                                            while (!reader.isEndElement())
-                                                                reader.next();
-                                                            // Step out of this element
-                                                            reader.next();
-                                                            // Step to next element event.
-                                                            while (!reader.isStartElement() && !reader.isEndElement())
-                                                                reader.next();
-                                                            if (reader.isEndElement()){
-                                                                //two continuous end elements means we are exiting the xml structure
-                                                                loopDone1 = true;
-                                                            } else {
-                                                                if (new javax.xml.namespace.QName("","PrescriptionItem").equals(reader.getName())){
-                                                                    list1.add(org.example.www.pharmatypes.Prescription.Factory.parse(reader));
-                                                                        
-                                                                }else{
-                                                                    loopDone1 = true;
-                                                                }
-                                                            }
-                                                        }
-                                                        // call the converter utility  to convert and set the array
-                                                        
-                                                        object.setPrescriptionItem((org.example.www.pharmatypes.Prescription[])
-                                                            org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
-                                                                org.example.www.pharmatypes.Prescription.class,
-                                                                list1));
-                                                            
+                                                object.setMedicineRequest(org.example.www.pharmatypes.PrescriptionListType.Factory.parse(reader));
+                                              
+                                        reader.next();
+                                    }
                               }  // End of if for expected property start element
                                 
-                                    else {
-                                        
-                                    }
-                                  
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             
